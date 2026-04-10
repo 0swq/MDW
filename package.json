@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.2.2",
+    "tailwindcss": "^4.2.2"
+  },
+  "dependencies": {
+    "swiper": "^12.1.3"
+  }
+}
