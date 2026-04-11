@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5cf7f658-a4dd-4d8e-8582-21f365807b04" name="Changes" comment="" />
+    <list default="true" id="5cf7f658-a4dd-4d8e-8582-21f365807b04" name="Changes" comment="czdcsdfsrgdgfb">
+      <change afterPath="$PROJECT_DIR$/../Aglome renewal/Front/src/Components/Rest/CarritoRest.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Aglome renewal/Front/src/Pages/Catalog/Carrito.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Aglome renewal/Front/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Aglome renewal/Front/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Aglome renewal/Front/src/Components/Catalog/Social.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Aglome renewal/Front/src/Components/Catalog/Social.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Aglome renewal/Front/src/Components/Rest/IndexRest.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Aglome renewal/Front/src/Components/Rest/IndexRest.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,6 +38,23 @@
       </map>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../Aglome renewal" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;0swq&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/0swq/MDW.git&quot;,
+    &quot;accountId&quot;: &quot;f18ba8e8-729e-42bf-9cd8-364d7605c98c&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -43,6 +68,7 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/LA CURACAO CHIMBOTE/PycharmProjects/Aglome renewal/Front/src/assets&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -80,11 +106,25 @@
       <updated>1775318365334</updated>
       <workItem from="1775318366361" duration="29565000" />
       <workItem from="1775778872165" duration="259000" />
-      <workItem from="1775830095178" duration="2370000" />
+      <workItem from="1775830095178" duration="4969000" />
+      <workItem from="1775863902487" duration="5530000" />
     </task>
+    <task id="LOCAL-00001" summary="czdcsdfsrgdgfb">
+      <option name="closed" value="true" />
+      <created>1775837662782</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1775837662784</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="czdcsdfsrgdgfb" />
+    <option name="LAST_COMMIT_MESSAGE" value="czdcsdfsrgdgfb" />
   </component>
 </project>
