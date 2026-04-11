@@ -78,7 +78,6 @@ export default function IndexRest() {
         </div>
       </section>
 
-      {/* Productos Destacados */}
       <section className="bg-[#f8f9fa] py-12 text-center">
         <div className="w-[90%] max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-[#2c3e50] mb-16">Productos Destacados</h2>

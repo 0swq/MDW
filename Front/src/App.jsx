@@ -6,6 +6,8 @@ import Metodos from "./Pages/Catalog/Metodos.jsx";
 import Reclamaciones from "./Pages/Catalog/Reclamaciones.jsx";
 import Contactanos from "./Pages/Catalog/Contactanos.jsx";
 import Tienda from "./Pages/Catalog/Tienda.jsx";
+import Carrito from "./Pages/Catalog/Carrito.jsx";
+import {ToastContainer} from "react-toastify";
 function App() {
     return (
         <Router>
@@ -16,7 +18,21 @@ function App() {
                 <Route path="/reclamaciones" element={<Reclamaciones/>}/>
                 <Route path="/contactanos" element={<Contactanos/>}/>
                 <Route path="/tienda" element={<Tienda/>}/>
+                <Route path="/carrito" element={<Carrito/>}/>
             </Routes>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                toastClassName="toast-quicksand"
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
         </Router>
     );
 }
