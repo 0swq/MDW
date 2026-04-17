@@ -60,7 +60,6 @@ export default function ReclamacionesRest() {
 
     return (
         <>
-            {/* Info Legal */}
             <section className="py-10 bg-[#f8f9fa]">
                 <div className="max-w-6xl mx-auto px-5">
                     <div
@@ -83,11 +82,9 @@ export default function ReclamacionesRest() {
                 </div>
             </section>
 
-            {/* Formulario + Sidebar */}
             <main className="max-w-6xl mx-auto px-5 py-20">
                 <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-10">
 
-                    {/* Formulario */}
                     <form
                         id="form-reclamo"
                         ref={addRef}
@@ -98,7 +95,6 @@ export default function ReclamacionesRest() {
                             <i className="fas fa-edit "></i> Presentar Reclamo
                         </h2>
 
-                        {/* Paso 1: Tipo */}
                         <div className="mb-10 pb-6 border-b border-gray-100">
                             <h3 className="text-xl font-bold text-[#2c3e50] mb-5">1. Tipo de Reclamo</h3>
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -120,7 +116,6 @@ export default function ReclamacionesRest() {
                             </div>
                         </div>
 
-                        {/* Paso 2: Datos */}
                         <div className="mb-10 pb-6 border-b border-gray-100">
                             <h3 className="text-xl font-bold text-[#2c3e50] mb-5">2. Datos del Reclamante</h3>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

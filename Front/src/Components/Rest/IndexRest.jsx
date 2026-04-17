@@ -57,7 +57,6 @@ export default function IndexRest() {
 
   return (
     <>
-      {/* Categorías Destacadas */}
       <section className="py-10 text-center">
         <div className="w-[90%] max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-[#2c3e50] mb-16">Categorías Destacadas</h2>
@@ -117,7 +116,6 @@ export default function IndexRest() {
         </div>
       </section>
 
-      {/* Por qué elegirnos */}
       <section className="py-24 bg-[#f8f9fa] text-center">
         <div className="w-[90%] max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-[#2c3e50] mb-4">¿Por qué elegir AGLOME?</h2>
@@ -138,7 +136,6 @@ export default function IndexRest() {
         </div>
       </section>
 
-      {/* Marcas */}
       <section className="py-5 bg-white flex justify-center items-center">
         <div className="flex justify-center items-center gap-20 flex-wrap">
           {marcas.map((m) => (

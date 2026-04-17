@@ -4,10 +4,8 @@ export default function Footer() {
     <footer className="bg-[#2c3e50] text-white pt-16 pb-6 mt-24">
       <div className="w-[90%] max-w-6xl mx-auto px-4">
 
-        {/* Columnas */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
 
-          {/* Consultar aquí */}
           <div className="px-2">
             <h3 className="text-sm font-bold uppercase tracking-wider mb-6 pb-3 border-b-2 border-[#3498db] w-fit">
               Consultar aquí
@@ -26,7 +24,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Quiénes somos */}
           <div className="px-2">
             <h3 className="text-sm font-bold uppercase tracking-wider mb-6 pb-3 border-b-2 border-[#3498db] w-fit">
               ¿Quiénes somos?
@@ -38,7 +35,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Contáctanos */}
           <div className="px-2">
             <h3 className="text-sm font-bold uppercase tracking-wider mb-6 pb-3 border-b-2 border-[#3498db] w-fit">
               Contáctanos
@@ -46,7 +42,6 @@ export default function Footer() {
             <p className="text-[#bdc3c7] text-sm">+51 923197032</p>
           </div>
 
-          {/* Redes sociales */}
           <div className="px-2">
             <h3 className="text-sm font-bold uppercase tracking-wider mb-6 pb-3 border-b-2 border-[#3498db] w-fit">
               Síguenos en
@@ -70,10 +65,10 @@ export default function Footer() {
 
         <div className="border-t border-[#34495e] pt-6 text-center text-[#bdc3c7] text-sm">
           <p>
-            Copyright © 2025 Todos los derechos reservados | Desarrollado por{' '}
+            Copyright © 2026 Todos los derechos reservados | {' '}
             <a href="#" target="_blank" rel="noreferrer"
               className="text-[#3498db] font-bold hover:text-white hover:underline transition-colors duration-300">
-              EQUIPO-A-B-M-O-D-E-L
+              A-B-M-O-D-E-L
             </a>
           </p>
         </div>

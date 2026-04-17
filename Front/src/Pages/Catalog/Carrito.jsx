@@ -1,4 +1,3 @@
-// Pages/Catalog/Carrito.jsx
 import Header from '../../Components/Catalog/Header.jsx'
 import Footer from '../../Components/Catalog/Footer.jsx'
 import SocialButtons from '../../Components/Catalog/Social.jsx'

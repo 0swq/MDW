@@ -1,11 +1,14 @@
-// Components/Catalog/Header.jsx
 import {useState} from 'react'
 import {NavLink, useNavigate} from 'react-router-dom'
 import logo from '../../assets/aglome _copy.png'
 
 export default function Header() {
     const [menuAbierto, setMenuAbierto] = useState(false)
+    const [menuUsuario, setMenuUsuario] = useState(false)
     const navigate = useNavigate()
+
+
+    const usuario = null
 
     const handleSearch = (e) => {
         e.preventDefault()
@@ -70,9 +73,10 @@ export default function Header() {
                         </ul>
                     </nav>
 
+                    {/* Barra de búsqueda */}
                     <form
                         onSubmit={handleSearch}
-                        className={`${menuAbierto ? 'flex' : 'hidden'} md:flex items-center bg-gray-50 rounded-full px-3 py-1 shadow-sm focus-within:shadow-blue-200 focus-within:bg-white transition-all max-w-[350px] w-full md:w-auto mr-10`}
+                        className={`${menuAbierto ? 'flex' : 'hidden'} md:flex items-center bg-gray-50 rounded-full px-3 py-1 shadow-sm focus-within:shadow-blue-200 focus-within:bg-white transition-all max-w-[350px] w-full md:w-auto`}
                     >
                         <input
                             type="text"
@@ -87,6 +91,89 @@ export default function Header() {
                             <i className="fas fa-search text-sm"></i>
                         </button>
                     </form>
+
+                    {/* Botón de usuario */}
+                    <div className="relative mr-5 ml-auto md:ml-0">
+                        <button
+                            onClick={() => setMenuUsuario(!menuUsuario)}
+                            className="flex items-center gap-2 rounded-full focus:outline-none group"
+                            aria-label="Menú de usuario"
+                        >
+                            {usuario?.foto ? (
+                                <img
+                                    src={usuario.foto}
+                                    alt={usuario.nombre}
+                                    className="w-10 h-10 rounded-full object-cover border-2 border-[#3498db] shadow-sm group-hover:border-[#2980b9] transition-colors"
+                                />
+                            ) : (
+                                <div className="w-10 h-10 rounded-full bg-[#3498db] flex items-center justify-center shadow-sm hover:bg-[#2980b9] transition-colors">
+                                    <i className="fas fa-user text-white text-base"></i>
+                                </div>
+                            )}
+                            {usuario?.nombre && (
+                                <span className="hidden md:block text-sm font-semibold text-[#2c3e50] group-hover:text-[#3498db] transition-colors">
+                                    {usuario.nombre}
+                                </span>
+                            )}
+                            <i className={`fas fa-chevron-down text-xs text-gray-400 hidden md:block transition-transform duration-200 ${menuUsuario ? 'rotate-180' : ''}`}></i>
+                        </button>
+
+                        {/* Dropdown del usuario */}
+                        {menuUsuario && (
+                            <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 py-1 z-50">
+                                {usuario ? (
+                                    <>
+                                        <div className="px-4 py-2 border-b border-gray-100">
+                                            <p className="text-sm font-semibold text-[#2c3e50]">{usuario.nombre}</p>
+                                            <p className="text-xs text-gray-400">{usuario.email}</p>
+                                        </div>
+                                        <NavLink
+                                            to="/perfil"
+                                            className="flex items-center gap-2 px-4 py-2 text-sm text-[#2c3e50] hover:bg-blue-50 hover:text-[#3498db] transition-colors"
+                                            onClick={() => setMenuUsuario(false)}
+                                        >
+                                            <i className="fas fa-user-circle w-4"></i>
+                                            Mi perfil
+                                        </NavLink>
+                                        <NavLink
+                                            to="/pedidos"
+                                            className="flex items-center gap-2 px-4 py-2 text-sm text-[#2c3e50] hover:bg-blue-50 hover:text-[#3498db] transition-colors"
+                                            onClick={() => setMenuUsuario(false)}
+                                        >
+                                            <i className="fas fa-box w-4"></i>
+                                            Mis pedidos
+                                        </NavLink>
+                                        <button
+                                            className="w-full flex items-center gap-2 px-4 py-2 text-sm text-red-500 hover:bg-red-50 transition-colors"
+                                            onClick={() => { /* lógica de cierre de sesión */ setMenuUsuario(false) }}
+                                        >
+                                            <i className="fas fa-sign-out-alt w-4"></i>
+                                            Cerrar sesión
+                                        </button>
+                                    </>
+                                ) : (
+                                    <>
+                                        <NavLink
+                                            to="/login"
+                                            className="flex items-center gap-2 px-4 py-2 text-sm text-[#2c3e50] hover:bg-blue-50 hover:text-[#3498db] transition-colors"
+                                            onClick={() => setMenuUsuario(false)}
+                                        >
+                                            <i className="fas fa-sign-in-alt w-4"></i>
+                                            Iniciar sesión
+                                        </NavLink>
+                                        <NavLink
+                                            to="/registro"
+                                            className="flex items-center gap-2 px-4 py-2 text-sm text-[#2c3e50] hover:bg-blue-50 hover:text-[#3498db] transition-colors"
+                                            onClick={() => setMenuUsuario(false)}
+                                        >
+                                            <i className="fas fa-user-plus w-4"></i>
+                                            Registrarse
+                                        </NavLink>
+                                    </>
+                                )}
+                            </div>
+                        )}
+                    </div>
 
                 </div>
             </div>

@@ -1,6 +1,7 @@
 import {useEffect, useRef, useState} from 'react'
 
 const ITEMS_POR_PAGINA = 20
+
 function EmptyState() {
     return (
         <div className="col-span-full flex flex-col items-center justify-center py-20 px-6 text-center">
@@ -24,6 +25,7 @@ function EmptyState() {
         </div>
     )
 }
+
 function SkeletonCard() {
     return (
         <div className="bg-white border border-[#eee] rounded-xl overflow-hidden animate-pulse">
@@ -37,6 +39,7 @@ function SkeletonCard() {
         </div>
     )
 }
+
 function ProductoModal({producto, onClose}) {
     useEffect(() => {
         const esc = (e) => e.key === 'Escape' && onClose()
@@ -123,6 +126,7 @@ function ProductoModal({producto, onClose}) {
         </div>
     )
 }
+
 export default function TiendaRest() {
     const [productos, setProductos] = useState([])
     const [categorias, setcategorias] = useState([])
@@ -144,37 +148,128 @@ export default function TiendaRest() {
 
         const cargar = async () => {
             try {
-                // TODO: reemplazar esta URL con el endpoint real
-                // const res = await fetch(`/api/productos?pagina=${paginaActual}&q=${busqueda}&categoria=${categoriaActiva}`, { signal: controller.signal })
-                // const data = await res.json()
-                // setProductos(data.items)
-                // setTotalPaginas(data.paginas)
-                // setcategorias(data.categorias ?? [])
-
-                // --- Datos de prueba mientras no hay API ---
-await new Promise((r) => setTimeout(r, 800))
-setProductos([
-  { id: 1, nombre: 'Melamina Blanca 18mm', categoria: 'Melaminas', stock: 50, unidad_medida: 'planchas', precio_venta: 85.00, img: 'https://placehold.co/300x300?text=Melamina+Blanca' },
-  { id: 2, nombre: 'Melamina Nogal Oscuro 15mm', categoria: 'Melaminas', stock: 30, unidad_medida: 'planchas', precio_venta: 92.50, img: 'https://placehold.co/300x300?text=Melamina+Nogal' },
-  { id: 3, nombre: 'Triplay Lupuna 4mm', categoria: 'Maderas', stock: 0, unidad_medida: 'planchas', precio_venta: 38.00, img: 'https://placehold.co/300x300?text=Triplay+Lupuna' },
-  { id: 4, nombre: 'MDF Standard 9mm', categoria: 'Maderas', stock: 20, unidad_medida: 'planchas', precio_venta: 55.00, img: 'https://placehold.co/300x300?text=MDF+9mm' },
-  { id: 5, nombre: 'Bisagra Clip 35mm Blum', categoria: 'Herrajes', stock: 200, unidad_medida: 'unidades', precio_venta: 4.50, img: 'https://placehold.co/300x300?text=Bisagra+Blum' },
-  { id: 6, nombre: 'Corredera Telescópica 45cm', categoria: 'Herrajes', stock: 80, unidad_medida: 'pares', precio_venta: 18.00, img: 'https://placehold.co/300x300?text=Corredera' },
-  { id: 7, nombre: 'Pegamento de Contacto 1L', categoria: 'Pegamentos', stock: 0, unidad_medida: 'galones', precio_venta: 28.00, img: 'https://placehold.co/300x300?text=Pegamento' },
-  { id: 8, nombre: 'Cola Sintetica 1/4', categoria: 'Pegamentos', stock: 60, unidad_medida: 'unidades', precio_venta: 12.00, img: 'https://placehold.co/300x300?text=Cola+Sintetica' },
-  { id: 9, nombre: 'Melamina Cerezo 18mm', categoria: 'Melaminas', stock: 15, unidad_medida: 'planchas', precio_venta: 95.00, img: 'https://placehold.co/300x300?text=Melamina+Cerezo' },
-  { id: 10, nombre: 'Jalador Aluminio 96mm', categoria: 'Herrajes', stock: 150, unidad_medida: 'unidades', precio_venta: 6.50, img: 'https://placehold.co/300x300?text=Jalador' },
-  { id: 11, nombre: 'Madera Cedro 2x4x10', categoria: 'Maderas', stock: 40, unidad_medida: 'piezas', precio_venta: 22.00, img: 'https://placehold.co/300x300?text=Cedro' },
-  { id: 12, nombre: 'Tapa Canto PVC Blanco 22mm', categoria: 'Accesorios', stock: 500, unidad_medida: 'metros', precio_venta: 1.20, img: 'https://placehold.co/300x300?text=Tapa+Canto' },
-])
-setTotalPaginas(1)
-setcategorias([
-  { grupo: 'Melaminas', subs: ['Melamina Blanca', 'Melamina Nogal', 'Melamina Cerezo', 'Melamina Wengue', 'Melamina Roble'] },
-  { grupo: 'Maderas', subs: ['Triplay', 'MDF', 'Cedro', 'Caoba', 'Tornillo'] },
-  { grupo: 'Herrajes', subs: ['Bisagras', 'Correderas', 'Jaladores', 'Cerraduras', 'Patas'] },
-  { nombre: 'Pegamentos' },
-  { nombre: 'Accesorios' },
-])
+                await new Promise((r) => setTimeout(r, 800))
+                setProductos([
+                    {
+                        id: 1,
+                        nombre: 'Melamina Blanca 18mm',
+                        categoria: 'Melaminas',
+                        stock: 50,
+                        unidad_medida: 'planchas',
+                        precio_venta: 85.00,
+                        img: 'https://placehold.co/300x300?text=Melamina+Blanca'
+                    },
+                    {
+                        id: 2,
+                        nombre: 'Melamina Nogal Oscuro 15mm',
+                        categoria: 'Melaminas',
+                        stock: 30,
+                        unidad_medida: 'planchas',
+                        precio_venta: 92.50,
+                        img: 'https://placehold.co/300x300?text=Melamina+Nogal'
+                    },
+                    {
+                        id: 3,
+                        nombre: 'Triplay Lupuna 4mm',
+                        categoria: 'Maderas',
+                        stock: 0,
+                        unidad_medida: 'planchas',
+                        precio_venta: 38.00,
+                        img: 'https://placehold.co/300x300?text=Triplay+Lupuna'
+                    },
+                    {
+                        id: 4,
+                        nombre: 'MDF Standard 9mm',
+                        categoria: 'Maderas',
+                        stock: 20,
+                        unidad_medida: 'planchas',
+                        precio_venta: 55.00,
+                        img: 'https://placehold.co/300x300?text=MDF+9mm'
+                    },
+                    {
+                        id: 5,
+                        nombre: 'Bisagra Clip 35mm Blum',
+                        categoria: 'Herrajes',
+                        stock: 200,
+                        unidad_medida: 'unidades',
+                        precio_venta: 4.50,
+                        img: 'https://placehold.co/300x300?text=Bisagra+Blum'
+                    },
+                    {
+                        id: 6,
+                        nombre: 'Corredera Telescópica 45cm',
+                        categoria: 'Herrajes',
+                        stock: 80,
+                        unidad_medida: 'pares',
+                        precio_venta: 18.00,
+                        img: 'https://placehold.co/300x300?text=Corredera'
+                    },
+                    {
+                        id: 7,
+                        nombre: 'Pegamento de Contacto 1L',
+                        categoria: 'Pegamentos',
+                        stock: 0,
+                        unidad_medida: 'galones',
+                        precio_venta: 28.00,
+                        img: 'https://placehold.co/300x300?text=Pegamento'
+                    },
+                    {
+                        id: 8,
+                        nombre: 'Cola Sintetica 1/4',
+                        categoria: 'Pegamentos',
+                        stock: 60,
+                        unidad_medida: 'unidades',
+                        precio_venta: 12.00,
+                        img: 'https://placehold.co/300x300?text=Cola+Sintetica'
+                    },
+                    {
+                        id: 9,
+                        nombre: 'Melamina Cerezo 18mm',
+                        categoria: 'Melaminas',
+                        stock: 15,
+                        unidad_medida: 'planchas',
+                        precio_venta: 95.00,
+                        img: 'https://placehold.co/300x300?text=Melamina+Cerezo'
+                    },
+                    {
+                        id: 10,
+                        nombre: 'Jalador Aluminio 96mm',
+                        categoria: 'Herrajes',
+                        stock: 150,
+                        unidad_medida: 'unidades',
+                        precio_venta: 6.50,
+                        img: 'https://placehold.co/300x300?text=Jalador'
+                    },
+                    {
+                        id: 11,
+                        nombre: 'Madera Cedro 2x4x10',
+                        categoria: 'Maderas',
+                        stock: 40,
+                        unidad_medida: 'piezas',
+                        precio_venta: 22.00,
+                        img: 'https://placehold.co/300x300?text=Cedro'
+                    },
+                    {
+                        id: 12,
+                        nombre: 'Tapa Canto PVC Blanco 22mm',
+                        categoria: 'Accesorios',
+                        stock: 500,
+                        unidad_medida: 'metros',
+                        precio_venta: 1.20,
+                        img: 'https://placehold.co/300x300?text=Tapa+Canto'
+                    },
+                ])
+                setTotalPaginas(1)
+                setcategorias([
+                    {
+                        grupo: 'Melaminas',
+                        subs: ['Melamina Blanca', 'Melamina Nogal', 'Melamina Cerezo', 'Melamina Wengue', 'Melamina Roble']
+                    },
+                    {grupo: 'Maderas', subs: ['Triplay', 'MDF', 'Cedro', 'Caoba', 'Tornillo']},
+                    {grupo: 'Herrajes', subs: ['Bisagras', 'Correderas', 'Jaladores', 'Cerraduras', 'Patas']},
+                    {nombre: 'Pegamentos'},
+                    {nombre: 'Accesorios'},
+                ])
             } catch (err) {
                 if (err.name !== 'AbortError') {
                     console.error('Error cargando productos:', err)
@@ -253,7 +348,6 @@ setcategorias([
                     <aside className="flex items-start relative flex-shrink-0" style={{minWidth: 280}}>
                         <div
                             className="w-[280px] bg-white shadow-[0_4px_12px_rgba(0,0,0,0.08)] rounded sticky top-[100px] z-10">
-                            {/* Header sidebar */}
                             <div
                                 className="bg-[#3498db] text-white px-5 py-4 flex items-center justify-between font-bold uppercase text-base cursor-pointer select-none"
                                 onClick={() => setSidebarAbierto((v) => !v)}
@@ -264,7 +358,6 @@ setcategorias([
                                 <i className={`fas fa-chevron-down transition-transform duration-300 ${sidebarAbierto ? 'rotate-180' : ''}`}></i>
                             </div>
 
-                            {/* Lista */}
                             <div
                                 className="overflow-y-auto transition-all duration-300 scrollbar-thin"
                                 style={{
@@ -315,7 +408,6 @@ setcategorias([
                             </div>
                         </div>
 
-                        {/* Mega menu */}
                         {megaMenuGrupo && (
                             <div
                                 ref={megaMenuRef}
@@ -353,7 +445,6 @@ setcategorias([
                     </aside>
 
                     <div className="flex-1 min-w-0">
-
                         <div
                             className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 bg-white p-5 rounded shadow-[0_2px_8px_rgba(0,0,0,0.05)]">
                             <h1 className="text-2xl font-bold text-[#2c3e50] uppercase border-l-[5px] border-[#3498db] pl-4 m-0">
@@ -370,17 +461,14 @@ setcategorias([
                                 <button
                                     type="submit"
                                     className="bg-[#3498db] text-white px-4 py-2 rounded-lg hover:bg-[#2980b9] transition-colors"
-                                >
-                                    <i className="fas fa-search"></i>
+                                ><i className="fas fa-search"></i>
                                 </button>
                             </form>
                         </div>
 
-                        {/* Grid */}
                         <div className="grid gap-6"
                              style={{gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))'}}>
-                            {cargando
-                                ? Array.from({length: 8}).map((_, i) => <SkeletonCard key={i}/>)
+                            {cargando ? Array.from({length: 8}).map((_, i) => <SkeletonCard key={i}/>)
                                 : productos.length === 0
                                     ? <EmptyState/>
                                     : productos.map((p) => (
@@ -390,7 +478,6 @@ setcategorias([
                                             onClick={() => setModalProducto(p)}
                                             className="opacity-0 translate-y-4 transition-all duration-500 bg-white border border-[#eee] rounded-xl overflow-hidden flex flex-col cursor-pointer hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,0,0,0.1)] hover:border-[#3498db]"
                                         >
-                                            {/* Imagen */}
                                             <div
                                                 className="h-52 flex items-center justify-center p-5 border-b border-[#f0f0f0] relative overflow-hidden">
                                                 <img
@@ -401,8 +488,8 @@ setcategorias([
                                                 {p.stock <= 0 && (
                                                     <span
                                                         className="absolute top-2 right-2 bg-[#999] text-white text-[11px] font-bold px-2 py-0.5 rounded uppercase">
-                            Agotado
-                          </span>
+                                                        Agotado
+                                                    </span>
                                                 )}
                                             </div>
 
@@ -413,8 +500,7 @@ setcategorias([
                                                 </h3>
                                                 <span
                                                     className="text-[11px] text-[#999] bg-[#f5f5f5] px-2 py-0.5 rounded-full inline-block w-fit mx-auto mb-3 uppercase">
-                          {p.categoria}
-                        </span>
+                                                    {p.categoria} </span>
                                                 <div
                                                     className="mt-auto border-t border-[#f0f0f0] pt-3 space-y-1 text-sm mb-3">
                                                     <div className="flex justify-between text-[#666]">
@@ -482,7 +568,6 @@ setcategorias([
                 </div>
             </main>
 
-            {/* Modal */}
             {modalProducto && (
                 <ProductoModal producto={modalProducto} onClose={() => setModalProducto(null)}/>
             )}

@@ -107,12 +107,10 @@ export default function NosotrosRest() {
         </div>
       </section>
 
-      {/* Info Legal */}
       <section className="py-16 bg-[#f8f9fa]">
         <div className="max-w-6xl mx-auto px-5">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-            {/* Datos registrales */}
             <div ref={addRef} className="opacity-0 translate-y-5 transition-all duration-500 bg-white p-8 rounded-xl shadow-md">
               <h3 className="text-2xl font-bold text-[#2c3e50] mb-6 pb-4 border-b-2 border-gray-100 flex items-center gap-3">
                 <i className="fas fa-file-contract "></i> Datos Generales

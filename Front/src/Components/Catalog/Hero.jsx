@@ -1,4 +1,3 @@
-// Components/Catalog/HeroPage.jsx
 export default function Hero({ titulo, subtitulo, icono, bg }) {
 
   if (!titulo) {

@@ -61,7 +61,6 @@ export default function MetodoPagoRest() {
 
   return (
     <>
-      {/* Comunicado Legal */}
       <section className="py-10 bg-[#f8f9fa]">
         <div className="max-w-6xl mx-auto px-5">
           <div
@@ -79,12 +78,10 @@ export default function MetodoPagoRest() {
         </div>
       </section>
 
-      {/* Métodos de Pago */}
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-5">
           <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-10 items-start">
 
-            {/* Métodos aceptados */}
             <div
               ref={addRef}
               className="opacity-0 translate-y-5 transition-all duration-500 bg-white p-10 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
@@ -92,7 +89,6 @@ export default function MetodoPagoRest() {
                 <i className="fas fa-money-check-alt text-[#3498db]"></i> Formas de Pago Aceptadas
               </h2>
 
-              {/* Tarjetas de crédito */}
               <div className="mb-10">
                 <h3 className="text-xl font-bold text-[#2c3e50] mb-5 flex items-center gap-3">
                   <i className="fas fa-credit-card text-[#3498db]"></i> Tarjetas de Crédito
@@ -102,7 +98,6 @@ export default function MetodoPagoRest() {
                 </div>
               </div>
 
-              {/* Billeteras móviles */}
               <div className="mb-10">
                 <h3 className="text-xl font-bold text-[#2c3e50] mb-5 flex items-center gap-3">
                   <i className="fas fa-mobile-alt text-[#3498db]"></i> Billeteras Móviles
@@ -112,7 +107,6 @@ export default function MetodoPagoRest() {
                 </div>
               </div>
 
-              {/* Opciones bancarias */}
               <div>
                 <h3 className="text-xl font-bold text-[#2c3e50] mb-5 flex items-center gap-3">
                   <i className="fas fa-university text-[#3498db]"></i> Opciones Bancarias
@@ -122,11 +116,7 @@ export default function MetodoPagoRest() {
                 </div>
               </div>
             </div>
-
-            {/* Info lateral */}
             <div className="flex flex-col gap-8">
-
-              {/* Datos bancarios */}
               <div
                 ref={addRef}
                 className="opacity-0 translate-y-5 transition-all duration-500 bg-white p-8 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.08)]">

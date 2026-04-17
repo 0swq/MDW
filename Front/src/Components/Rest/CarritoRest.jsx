@@ -7,17 +7,15 @@ const ITEMS_INICIALES = [
         categoria: 'Melaminas',
         precio_venta: 85.00,
         cantidad: 2,
-        unidad_medida: 'planchas',
-        img: 'https://placehold.co/120x120?text=Melamina'
+        unidad_medida: 'planchas'
     },
     {
         id: 5,
         nombre: 'Bisagra Clip 35mm Blum',
-        categoria: 'Herrajes',
+        categoria: 'Herramientas',
         precio_venta: 4.50,
         cantidad: 10,
-        unidad_medida: 'unidades',
-        img: 'https://placehold.co/120x120?text=Bisagra'
+        unidad_medida: 'unidades'
     },
     {
         id: 8,
@@ -25,8 +23,7 @@ const ITEMS_INICIALES = [
         categoria: 'Pegamentos',
         precio_venta: 12.00,
         cantidad: 3,
-        unidad_medida: 'unidades',
-        img: 'https://placehold.co/120x120?text=Cola'
+        unidad_medida: 'unidades'
     },
 ]
 
@@ -62,14 +59,9 @@ function ItemCarrito({item, onCantidad, onEliminar}) {
         <div
             className="group flex gap-4 sm:gap-6 bg-white rounded-2xl p-4 sm:p-5 border border-[#eee] hover:border-[#3498db] hover:shadow-[0_8px_24px_rgba(52,152,219,0.1)] transition-all duration-300">
 
-            {/* Imagen */}
             <div
                 className="w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0 rounded-xl bg-[#f8f9fa] flex items-center justify-center overflow-hidden border border-[#f0f0f0]">
-                <img
-                    src={item.img}
-                    alt={item.nombre}
-                    className="w-full h-full object-contain p-2"
-                />
+                Imagen del producto
             </div>
 
             {/* Info */}
@@ -98,9 +90,7 @@ function ItemCarrito({item, onCantidad, onEliminar}) {
                     </button>
                 </div>
 
-                {/* Cantidad + subtotal */}
                 <div className="flex items-center justify-between gap-3">
-                    {/* Contador */}
                     <div className="flex items-center gap-0 border border-[#e0e0e0] rounded-lg overflow-hidden">
                         <button
                             onClick={() => onCantidad(item.id, item.cantidad - 1)}
@@ -121,7 +111,6 @@ function ItemCarrito({item, onCantidad, onEliminar}) {
                         </button>
                     </div>
 
-                    {/* Subtotal */}
                     <div className="text-right">
                         <p className="text-[11px] text-[#999] uppercase tracking-wide">Subtotal</p>
                         <p className="text-[17px] font-black text-[#2c3e50]">
@@ -143,8 +132,8 @@ function ResumenPedido({items, onVaciar}) {
             className="bg-white rounded-2xl border border-[#eee] overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.06)] sticky top-[100px]">
 
             <div className="bg-[#3498db] px-6 py-4">
-                <h2 className="text-white font-black text-lg tracking-tight flex items-center gap-2">
-                    <i className="fas fa-receipt text-base"></i> Resumen del pedido
+                <h2 className="text-white font-black  tracking-tight flex items-center gap-2">
+                    Resumen
                 </h2>
             </div>
 
@@ -169,9 +158,9 @@ function ResumenPedido({items, onVaciar}) {
                     </div>
                     <div className="flex justify-between text-sm text-[#27ae60] font-semibold">
                         <span className="flex items-center gap-1">
-                            <i className="fas fa-truck text-xs"></i> Envío
+                           Envío
                         </span>
-                        <span>A coordinar</span>
+                        <span>Indefinido</span>
                     </div>
                 </div>
                 <div
@@ -180,18 +169,13 @@ function ResumenPedido({items, onVaciar}) {
                     <span className="font-black text-[#3498db] text-2xl">S/ {subtotal.toFixed(2)}</span>
                 </div>
 
-                {/* CTA WhatsApp */}
                 <a
-                    href={`https://wa.me/51923197032?text=${encodeURIComponent(
-                        '¡Hola AGLOME PERU! Quiero realizar el siguiente pedido:\n' +
-                        items.map(i => `• ${i.nombre} x${i.cantidad} → S/ ${(i.precio_venta * i.cantidad).toFixed(2)}`).join('\n') +
-                        `\n\nTOTAL: S/ ${subtotal.toFixed(2)}`
-                    )}`}
+
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-[#25D366] text-white font-black text-sm hover:bg-[#1ebe5d] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(37,211,102,0.35)] shadow-[0_4px_12px_rgba(37,211,102,0.2)]"
+                    className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-[#111111] text-white font-black text-sm "
                 >
-                    <i className="fab fa-whatsapp text-lg"></i> Confirmar por WhatsApp
+                   Confirmar la compra
                 </a>
 
                 <button
@@ -232,7 +216,7 @@ export default function CarritoRest() {
         <main className="w-[90%] max-w-[1200px] mx-auto py-10 pb-24">
             <div className="flex items-center justify-between mb-8">
                 <div>
-                    <h1 className="text-3xl font-black text-[#2c3e50] tracking-tight leading-none">
+                    <h1 className="text-3xl text-[#2c3e50] tracking-tight leading-none">
                         Mi Carrito
                     </h1>
                     {items.length > 0 && (
