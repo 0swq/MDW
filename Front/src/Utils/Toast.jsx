@@ -1,15 +1,15 @@
 import { toast } from 'react-toastify';
 export const noti_util = (tipo, mensaje, id_notificacion = null) => {
     const iconos = {
-        exito: '✅',
-        error: '❌',
-        advertencia: '⚠️',
-        info: 'ℹ️',
-        cargando: '⏳'
+        exito: "☺",
+        error: "⍨",
+        advertencia: "⚠︎",
+        info: "ⓘ",
+        cargando: "⏱︎ "
     };
 
     const icono = iconos[tipo] || '';
-    const mensajeCompleto = icono ? `${icono} ${mensaje}` : mensaje;
+    const mensajeCompleto = icono.concat(" ").concat(mensaje);
 
     if (id_notificacion) {
         let toastType;

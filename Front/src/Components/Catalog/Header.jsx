@@ -1,19 +1,36 @@
 import {useState} from 'react'
 import {NavLink, useNavigate} from 'react-router-dom'
+import {useUser, useClerk, UserProfile} from '@clerk/clerk-react'
 import logo from '../../assets/aglome _copy.png'
+import ContactanosRest from "../Rest/ContactanosRest.jsx";
+import Contactanos from "../../Pages/Catalog/Contactanos.jsx";
+import {noti_util} from "../../Utils/Toast.jsx";
 
 export default function Header() {
     const [menuAbierto, setMenuAbierto] = useState(false)
     const [menuUsuario, setMenuUsuario] = useState(false)
+    const [perfilAbierto, setPerfilAbierto] = useState(false)
+
+
     const navigate = useNavigate()
+    const {isSignedIn, user} = useUser()
+    const {signOut, openSignIn} = useClerk()
+    const esAdmin = true
+    //const esAdmin = user?.publicMetadata?.role === "admin"
 
-
-    const usuario = null
 
     const handleSearch = (e) => {
         e.preventDefault()
         const q = e.target.q.value
         navigate(`/tienda?q=${q}`)
+    }
+
+    const handleClickUsuario = () => {
+        if (isSignedIn) {
+            setMenuUsuario(!menuUsuario)
+        } else {
+            openSignIn()
+        }
     }
 
     return (
@@ -72,8 +89,6 @@ export default function Header() {
                             ))}
                         </ul>
                     </nav>
-
-                    {/* Barra de búsqueda */}
                     <form
                         onSubmit={handleSearch}
                         className={`${menuAbierto ? 'flex' : 'hidden'} md:flex items-center bg-gray-50 rounded-full px-3 py-1 shadow-sm focus-within:shadow-blue-200 focus-within:bg-white transition-all max-w-[350px] w-full md:w-auto`}
@@ -92,88 +107,131 @@ export default function Header() {
                         </button>
                     </form>
 
-                    {/* Botón de usuario */}
                     <div className="relative mr-5 ml-auto md:ml-0">
                         <button
-                            onClick={() => setMenuUsuario(!menuUsuario)}
+                            onClick={handleClickUsuario}
                             className="flex items-center gap-2 rounded-full focus:outline-none group"
                             aria-label="Menú de usuario"
                         >
-                            {usuario?.foto ? (
-                                <img
-                                    src={usuario.foto}
-                                    alt={usuario.nombre}
-                                    className="w-10 h-10 rounded-full object-cover border-2 border-[#3498db] shadow-sm group-hover:border-[#2980b9] transition-colors"
-                                />
+                            {isSignedIn ? (
+                                <img src={user.imageUrl} alt={user.firstName}
+                                     className="w-10 h-10 rounded-full object-cover border-2 border-[#3498db] shadow-sm group-hover:border-[#2980b9] transition-colors"/>
                             ) : (
-                                <div className="w-10 h-10 rounded-full bg-[#3498db] flex items-center justify-center shadow-sm hover:bg-[#2980b9] transition-colors">
+                                <div
+                                    className="w-10 h-10 rounded-full bg-[#3498db] flex items-center justify-center shadow-sm hover:bg-[#2980b9] transition-colors">
                                     <i className="fas fa-user text-white text-base"></i>
                                 </div>
                             )}
-                            {usuario?.nombre && (
-                                <span className="hidden md:block text-sm font-semibold text-[#2c3e50] group-hover:text-[#3498db] transition-colors">
-                                    {usuario.nombre}
+                            {isSignedIn && (
+                                <span
+                                    className="hidden md:block text-sm font-semibold text-[#2c3e50] group-hover:text-[#3498db] transition-colors">
+                                    {user.firstName}
                                 </span>
                             )}
-                            <i className={`fas fa-chevron-down text-xs text-gray-400 hidden md:block transition-transform duration-200 ${menuUsuario ? 'rotate-180' : ''}`}></i>
+                            {isSignedIn && (
+                                <i className={`fas fa-chevron-down text-xs text-gray-400 hidden md:block transition-transform duration-200 ${menuUsuario ? 'rotate-180' : ''}`}></i>
+                            )}
                         </button>
 
-                        {/* Dropdown del usuario */}
-                        {menuUsuario && (
-                            <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 py-1 z-50">
-                                {usuario ? (
-                                    <>
-                                        <div className="px-4 py-2 border-b border-gray-100">
-                                            <p className="text-sm font-semibold text-[#2c3e50]">{usuario.nombre}</p>
-                                            <p className="text-xs text-gray-400">{usuario.email}</p>
-                                        </div>
-                                        <NavLink
-                                            to="/perfil"
-                                            className="flex items-center gap-2 px-4 py-2 text-sm text-[#2c3e50] hover:bg-blue-50 hover:text-[#3498db] transition-colors"
-                                            onClick={() => setMenuUsuario(false)}
-                                        >
-                                            <i className="fas fa-user-circle w-4"></i>
-                                            Mi perfil
-                                        </NavLink>
-                                        <NavLink
-                                            to="/pedidos"
-                                            className="flex items-center gap-2 px-4 py-2 text-sm text-[#2c3e50] hover:bg-blue-50 hover:text-[#3498db] transition-colors"
-                                            onClick={() => setMenuUsuario(false)}
-                                        >
-                                            <i className="fas fa-box w-4"></i>
-                                            Mis pedidos
-                                        </NavLink>
-                                        <button
-                                            className="w-full flex items-center gap-2 px-4 py-2 text-sm text-red-500 hover:bg-red-50 transition-colors"
-                                            onClick={() => { /* lógica de cierre de sesión */ setMenuUsuario(false) }}
-                                        >
-                                            <i className="fas fa-sign-out-alt w-4"></i>
-                                            Cerrar sesión
-                                        </button>
-                                    </>
-                                ) : (
-                                    <>
-                                        <NavLink
-                                            to="/login"
-                                            className="flex items-center gap-2 px-4 py-2 text-sm text-[#2c3e50] hover:bg-blue-50 hover:text-[#3498db] transition-colors"
-                                            onClick={() => setMenuUsuario(false)}
-                                        >
-                                            <i className="fas fa-sign-in-alt w-4"></i>
-                                            Iniciar sesión
-                                        </NavLink>
-                                        <NavLink
-                                            to="/registro"
-                                            className="flex items-center gap-2 px-4 py-2 text-sm text-[#2c3e50] hover:bg-blue-50 hover:text-[#3498db] transition-colors"
-                                            onClick={() => setMenuUsuario(false)}
-                                        >
-                                            <i className="fas fa-user-plus w-4"></i>
-                                            Registrarse
-                                        </NavLink>
-                                    </>
-                                )}
+                        {isSignedIn && menuUsuario && (
+                            <div
+                                className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 py-1 z-50">
+                                <div className="px-4 py-2 border-b border-gray-100">
+                                    <p className="text-sm font-semibold text-[#2c3e50]">{user.firstName} {user.lastName}</p>
+                                    <p className="text-xs text-gray-400">{user.primaryEmailAddress?.emailAddress}</p>
+                                </div>
+                                <button
+                                    onClick={() => {
+                                        setPerfilAbierto(true);
+                                        setMenuUsuario(false)
+                                    }}
+                                    className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#2c3e50] hover:bg-blue-50 hover:text-[#3498db] transition-colors"
+                                >
+                                    <i className="fas fa-user-circle w-4"></i>
+                                    Mi perfil
+                                </button>
+                                {esAdmin ? <button
+                                    onClick={() => {
+                                        setPerfilAbierto(true);
+                                        setMenuUsuario(false)
+                                        navigate('/admin')
+                                    }}
+                                    className="w-full flex items-center gap-2 px-4 py-2 text-sm text-[#2c3e50] hover:bg-blue-50 hover:text-[#3498db] transition-colors"
+                                >
+                                    <i className="fas fa-dashboard w-4"></i>
+                                    Panel de control
+
+                                </button> : null
+                                }
+                                <button
+                                    onClick={() => {
+                                        setMenuUsuario(false)
+                                        noti_util("advertencia", "Cerrando sesión...")
+                                        setTimeout(() => {
+                                            signOut()
+                                        }, 2500)
+                                    }}
+                                    className="w-full flex items-center gap-2 px-4 py-2 text-sm text-red-500 hover:bg-red-50 transition-colors"
+                                >
+                                    <i className="fas fa-sign-out-alt w-4"></i>
+                                    Cerrar sesión
+                                </button>
                             </div>
                         )}
                     </div>
+
+                    {perfilAbierto && (
+                        <div
+                            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50"
+                            onClick={() => setPerfilAbierto(false)}
+                        >
+                            <div
+                                onClick={e => e.stopPropagation()}
+                                className="max-h-[90vh] overflow-y-auto rounded-xl shadow-2xl"
+                                style={{maxWidth: "900px", width: "95vw"}}
+                            >
+                                <UserProfile
+                                    appearance={{
+                                        elements: {
+                                            card: {height: "100%", boxShadow: "none"},
+                                            scrollBox: {height: "100%", overflowY: "auto"}
+                                        }
+                                    }}>
+                                    <UserProfile.Page
+                                        label="Mis Pedidos"
+                                        url="pedidos"
+                                        labelIcon={<i className="fas fa-box"/>}
+                                    >
+                                        <h1>sdsas</h1>
+                                    </UserProfile.Page>
+
+                                    <UserProfile.Page
+                                        label="Cupones"
+                                        url="cupones"
+                                        labelIcon={<i className="fas fa-ticket"/>}
+                                    >
+                                        <div>Contenido de cupones aquí</div>
+                                    </UserProfile.Page>
+
+                                    <UserProfile.Page
+                                        label="Direcciones"
+                                        url="direcciones"
+                                        labelIcon={<i className="fas fa-house"/>}
+                                    >
+                                        <div>Contenido de direcciones aquí</div>
+                                    </UserProfile.Page>
+
+                                    <UserProfile.Page
+                                        label="Métodos de pago"
+                                        url="metodos"
+                                        labelIcon={<i className="fas fa-credit-card"/>}
+                                    >
+                                        <div>Contenido de métodos de pago aquí</div>
+                                    </UserProfile.Page>
+                                </UserProfile>
+                            </div>
+                        </div>
+                    )}
 
                 </div>
             </div>
